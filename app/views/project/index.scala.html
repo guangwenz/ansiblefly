@@ -1,0 +1,13 @@
+@import controllers.ProjectController.ProjectData
+@(projectForm:Form[ProjectData])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@main("Projects") {
+    <h1>Project lists ll</h1>
+    @helper.form(action = routes.ProjectController.create) {
+        @helper.CSRF.formField
+        @helper.inputText(projectForm("name"))
+        @helper.textarea(projectForm("description"))
+        @helper.inputText(projectForm("scm"))
+        <input type="submit" value="Create">
+    }
+}
